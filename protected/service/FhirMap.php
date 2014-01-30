@@ -68,6 +68,22 @@ class FhirMap extends \CApplicationComponent
 	}
 
 	/**
+	 * @param string $tag
+	 * @param string $fhir_resource_type Limit to a specific FHIR resource type
+	 * @return Service|null
+	 */
+	public function getServiceForTag($tag, $fhir_resource_type = null)
+	{
+		if (!preg_match('|^http://openeyes.org.uk/fhir/tag/resource/(\w+)/(\w+)|', $tag, $m) ||
+			($fhir_resource_type && ($m[1] != $fhir_resource_type)) ||
+			!isset($this->map[$m[1]][$m[2]])) {
+			return null;
+		}
+
+		return \Yii::app()->serviceLocator->getServiceForResourceType($this->map[$m[1]][$m[2]]);
+	}
+
+	/**
 	 * Get all services corresponding to the specified FHIR resource type
 	 *
 	 * @param string $fhir_resource

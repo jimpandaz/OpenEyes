@@ -20,7 +20,10 @@ class ApiController extends CController
 	const ATOM_MIMETYPE = 'application/atom+xml; charset=utf-8';
 
 	protected $output_format;
-	protected $tags;
+
+	protected $general_tags;
+	protected $profile_tags;
+	protected $security_tags;
 
 	public function beforeAction($action)
 	{
@@ -68,7 +71,10 @@ class ApiController extends CController
 		}
 
 		// Tags, aka HTTP categories: http://hl7.org/implement/standards/fhir/http.html#tags
-		$this->tags = CategoryHeader::load();
+		$tags = CategoryHeader::load();
+		$this->general_tags = $tags->get('http://hl7.org/fhir/tag');
+		$this->profile_tags = $tags->get('http://hl7.org/fhir/tag/profile');
+		$this->security_tags = $tags->get('http://hl7.org/fhir/tag/security');
 
 		return true;
 	}
@@ -298,25 +304,11 @@ class ApiController extends CController
 	{
 		// We keep track of the search params that were actually used in order to create a self URL for the bundle (http://www.hl7.org/implement/standards/fhir/search.html#conformance)
 		$used_params = array('resource_type' => $resource_type);
-		foreach (array('_format', '_count') as $param) {
+		foreach (array('_format', '_count', '_id', '_tag') as $param) {
 			if (isset($_REQUEST[$param])) $used_params[$param] = $_REQUEST[$param];
 		}
 
-		// Get a list of possible services for this resource type
-		if (isset($_REQUEST['_id'])) {
-			// Special case for when there's a resource ID as part of the search (which doesn't seem very useful...)
-			// We grab the relevant service and pass it a service layer ID in the 'id' param
-			$used_params['_id'] = $_REQUEST['_id'];
-			$ref = Yii::app()->fhirMap->getReference("{$resource_type}/{$_REQUEST['_id']}");
-			if ($ref) {
-				$services = array($ref->getService());
-				$_REQUEST['id'] = $ref->getId();
-			} else {
-				$services = array();  // Not an error: we support the resource type, you just asked for an ID that doesn't exist
-			}
-		} else {
-			$services = Yii::app()->fhirMap->getServices($resource_type);
-		}
+		$services = $this->pickServicesForSearch($resource_type, $_REQUEST);
 
 		$count = isset($_REQUEST['_count']) ? intval($_REQUEST['_count']) : null;
 
@@ -341,6 +333,37 @@ class ApiController extends CController
 		);
 
 		$this->sendBundle($bundle);
+	}
+
+	protected function pickServicesForSearch($resource_type, array &$request)
+	{
+		$service = null;
+
+		// Special case for when there's a resource ID as part of the search (which doesn't seem very useful...)
+		// We grab the relevant service and pass it a service layer ID in the 'id' param
+		if (isset($request['_id'])) {
+			$ref = Yii::app()->fhirMap->getReference("{$resource_type}/{$request['_id']}");
+			if ($ref) {
+				$id_service = $ref->getService();
+				$request['id'] = $ref->getId();
+			} else {
+				// Not an error: we support the resource type, you just asked for an ID that doesn't exist
+				return array();
+			}
+		}
+
+		// Allow selecting a specific service by tag
+		if (isset($request['_tag'])) {
+			$prefix = $this->parseResourceTypeTag($resource_type, $request['_tag']);
+			if (!$prefix) {
+				// Unrecognised tag, we're not going to find anything
+				return array();
+			}
+
+			$tag_service = Yii::app()->fhirMap->getServiceForTag($resource_type, $prefix);
+		}
+
+		// ...
 	}
 
 	public function actionBadRequest()
