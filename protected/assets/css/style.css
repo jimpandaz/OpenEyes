@@ -4660,7 +4660,6 @@ tfoot.pagination-container .pagination li {
   background: none;
   padding-bottom: 0;
   padding-top: 0;
-  /* FIXME: unsure if used anwhere */
 }
 /* line 213, ../sass/openeyes/components/events/_elements.scss */
 .view.highlight-fields .element-data.highlight, .view.highlight-fields .edit .highlight.element-fields, .edit .view.highlight-fields .highlight.element-fields, .view.highlight-fields .highlight.sub-element-data, .view.highlight-fields .edit .highlight.sub-element-fields, .edit .view.highlight-fields .highlight.sub-element-fields {
@@ -5227,17 +5226,17 @@ tfoot.pagination-container .pagination li {
   font-size: 0.8125rem;
 }
 
-/* line 1, ../sass/openeyes/components/print/_base.scss */
+/* line 17, ../sass/openeyes/components/print/_base.scss */
 .printable {
   display: none;
 }
-/* line 3, ../sass/openeyes/components/print/_base.scss */
+/* line 19, ../sass/openeyes/components/print/_base.scss */
 .printable * {
   font-size: 9pt;
 }
 
 @media print {
-  /* line 9, ../sass/openeyes/components/print/_base.scss */
+  /* line 25, ../sass/openeyes/components/print/_base.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -5246,51 +5245,51 @@ tfoot.pagination-container .pagination li {
     -ms-filter: none !important;
   }
 
-  /* line 16, ../sass/openeyes/components/print/_base.scss */
+  /* line 32, ../sass/openeyes/components/print/_base.scss */
   a {
     text-decoration: underline;
   }
-  /* line 18, ../sass/openeyes/components/print/_base.scss */
+  /* line 34, ../sass/openeyes/components/print/_base.scss */
   a:visited {
     text-decoration: underline;
   }
-  /* line 21, ../sass/openeyes/components/print/_base.scss */
+  /* line 37, ../sass/openeyes/components/print/_base.scss */
   a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  /* line 25, ../sass/openeyes/components/print/_base.scss */
+  /* line 41, ../sass/openeyes/components/print/_base.scss */
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  /* line 28, ../sass/openeyes/components/print/_base.scss */
+  /* line 44, ../sass/openeyes/components/print/_base.scss */
   .ir a:after {
     content: "";
   }
 
-  /* line 32, ../sass/openeyes/components/print/_base.scss */
+  /* line 48, ../sass/openeyes/components/print/_base.scss */
   a[href^="javascript:"]:after, a[href^="#"]:after {
     content: "";
   }
 
-  /* line 36, ../sass/openeyes/components/print/_base.scss */
+  /* line 52, ../sass/openeyes/components/print/_base.scss */
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 40, ../sass/openeyes/components/print/_base.scss */
+  /* line 56, ../sass/openeyes/components/print/_base.scss */
   thead {
     display: table-header-group;
   }
 
-  /* line 43, ../sass/openeyes/components/print/_base.scss */
+  /* line 59, ../sass/openeyes/components/print/_base.scss */
   tr {
     page-break-inside: avoid;
   }
 
-  /* line 46, ../sass/openeyes/components/print/_base.scss */
+  /* line 62, ../sass/openeyes/components/print/_base.scss */
   img {
     page-break-inside: avoid;
     max-width: 100% !important;
@@ -5300,23 +5299,23 @@ tfoot.pagination-container .pagination li {
     margin: 0.5cm;
 }
 
-  /* line 54, ../sass/openeyes/components/print/_base.scss */
+  /* line 70, ../sass/openeyes/components/print/_base.scss */
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
 
-  /* line 58, ../sass/openeyes/components/print/_base.scss */
+  /* line 74, ../sass/openeyes/components/print/_base.scss */
   h2, h3 {
     page-break-after: avoid;
   }
 
-  /* line 61, ../sass/openeyes/components/print/_base.scss */
+  /* line 77, ../sass/openeyes/components/print/_base.scss */
   table {
     width: 100%;
   }
 
-  /* line 64, ../sass/openeyes/components/print/_base.scss */
+  /* line 80, ../sass/openeyes/components/print/_base.scss */
   td, th {
     text-align: left;
     padding: 2px 4px;
@@ -5325,46 +5324,46 @@ tfoot.pagination-container .pagination li {
   }
 
   /* PREPAPRE PAGE FOR PRINT */
-  /* line 71, ../sass/openeyes/components/print/_base.scss */
+  /* line 87, ../sass/openeyes/components/print/_base.scss */
   html {
     height: 100%;
   }
 
-  /* line 74, ../sass/openeyes/components/print/_base.scss */
+  /* line 90, ../sass/openeyes/components/print/_base.scss */
   .printable {
     display: block !important;
     width: 1050px !important;
   }
 }
 /* ====== LETTERs (hidden in page) ====== */
-/* line 3, ../sass/openeyes/components/print/_letters.scss */
+/* line 19, ../sass/openeyes/components/print/_letters.scss */
 #letterTemplate {
   display: block;
   background: #fff;
 }
-/* line 6, ../sass/openeyes/components/print/_letters.scss */
+/* line 22, ../sass/openeyes/components/print/_letters.scss */
 #letterTemplate #l_type {
   text-align: center;
   font-size: 6pt;
 }
-/* line 11, ../sass/openeyes/components/print/_letters.scss */
+/* line 27, ../sass/openeyes/components/print/_letters.scss */
 #letterTemplate #l_content p {
   margin-bottom: 1em;
 }
-/* line 14, ../sass/openeyes/components/print/_letters.scss */
+/* line 30, ../sass/openeyes/components/print/_letters.scss */
 #letterTemplate #l_content ul {
   margin: 0 0 1.5em 0.5em;
 }
-/* line 17, ../sass/openeyes/components/print/_letters.scss */
+/* line 33, ../sass/openeyes/components/print/_letters.scss */
 #letterTemplate #l_content table {
   margin-bottom: 1.5em;
 }
-/* line 20, ../sass/openeyes/components/print/_letters.scss */
+/* line 36, ../sass/openeyes/components/print/_letters.scss */
 #letterTemplate #l_content td {
   padding: 0.25em 0.5em;
 }
 
-/* line 26, ../sass/openeyes/components/print/_letters.scss */
+/* line 42, ../sass/openeyes/components/print/_letters.scss */
 #letterFooter {
   display: block;
   text-align: right;
@@ -5376,24 +5375,24 @@ tfoot.pagination-container .pagination li {
 }
 
 /* ====== FORMs (hidden in page) ====== */
-/* line 3, ../sass/openeyes/components/print/_forms.scss */
+/* line 19, ../sass/openeyes/components/print/_forms.scss */
 #printForm {
   display: block;
   background: #fff;
   font-size: 7pt;
 }
 
-/* line 10, ../sass/openeyes/components/print/_forms.scss */
+/* line 26, ../sass/openeyes/components/print/_forms.scss */
 #printFormTemplate .title {
   font-size: 13pt;
   font-weight: bold;
 }
-/* line 14, ../sass/openeyes/components/print/_forms.scss */
+/* line 30, ../sass/openeyes/components/print/_forms.scss */
 #printFormTemplate table tr > td {
   padding: 1em 0.5em;
   border: 1px solid #eee;
 }
-/* line 18, ../sass/openeyes/components/print/_forms.scss */
+/* line 34, ../sass/openeyes/components/print/_forms.scss */
 #printFormTemplate .subTitle {
   display: block;
   font-size: 8pt;
@@ -5402,7 +5401,7 @@ tfoot.pagination-container .pagination li {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
-/* line 26, ../sass/openeyes/components/print/_forms.scss */
+/* line 42, ../sass/openeyes/components/print/_forms.scss */
 #printFormTemplate table.subTableNoBorders tr > td {
   border: none;
 }
