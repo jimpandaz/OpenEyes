@@ -36,6 +36,11 @@
 		display: block;
 		height: 70px;
 		max-width: 210px;
+		@media print {
+			&:after {
+				content: image-url("_structure/openeyes.png");
+			}
+		}
 	}
 	&.stuck {
 		background: #a0d7f8 image-url("_structure/miniheader/bg_gradient.png") bottom repeat-x;

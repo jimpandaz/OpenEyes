@@ -25,6 +25,9 @@
 		padding: 8px;
 		text-align: center;
 		min-width: 1230px;
+		@media print {
+			min-width: 0;
+		}
 		&.admin {
 			background: #DAA520;
 			&.stuck {

@@ -70,5 +70,8 @@
 		.stuck & {
 			display: none;
 		}
+		@media print {
+			display: none;
+		}
 	}
 }

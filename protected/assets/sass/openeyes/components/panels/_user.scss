@@ -77,6 +77,11 @@
 			.stuck & {
 				margin-top: 5px;
 			}
+			.change-firm {
+				@media print {
+					display: none;
+				}
+			}
 		}
 		.user-name {
 			padding-top: 4px;

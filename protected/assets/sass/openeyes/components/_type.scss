@@ -41,8 +41,12 @@ h1 {
 		display: inline-block;
 		font-size: rem-calc(13px);
 		font-weight: bold;
-		margin: 0 0 12px 0;;
+		margin: 0 0 12px 0;
 		padding: 5px 15px 5px 55px;
+		@media print {
+			font-size: rem-calc(20px);
+			padding-left: 24px;
+		}
 		&.admin {
 			background: #666;
 			border-left: none;
