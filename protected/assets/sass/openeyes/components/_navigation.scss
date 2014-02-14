@@ -67,8 +67,10 @@
 				background: white;
 			}
 		}
-		.stuck & {
-			display: none;
+		@media screen {
+			.stuck & {
+				display: none;
+			}
 		}
 		@media print {
 			display: none;

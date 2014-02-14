@@ -21,6 +21,9 @@
 		.add-episode {
 			margin-left: 2px;
 		}
+		@media print {
+			display: none;
+		}
 	}
 }
 

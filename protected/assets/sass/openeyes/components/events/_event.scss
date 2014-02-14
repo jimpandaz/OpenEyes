@@ -29,6 +29,9 @@
 	}
 	&.column {
 		width: 85.4%;
+		@media print {
+			width: 100%;
+		}
 	}
 	.event-content {
 		background-position: right top;
@@ -43,11 +46,16 @@
 		border-bottom: 5px solid #a29d8a;
 		margin: 0 -10px;
 		padding: 6px 10px 0 10px;
-		&.stuck {
-			@include box-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-			position: fixed;
-			top: 39px;
-			z-index: 9;
+		@media print {
+			display: none;
+		}
+		@media screen {
+			&.stuck {
+				@include box-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+				position: fixed;
+				top: 39px;
+				z-index: 9;
+			}
 		}
 	}
 	.event-title {
@@ -63,6 +71,7 @@
 		margin: 10px;
 		padding-top: 8px;
 		@media print {
+			padding: 8px 10px 0 10px;
 			margin: 10px 0;
 		}
 		.info {

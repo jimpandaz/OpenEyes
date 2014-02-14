@@ -59,6 +59,11 @@
 		background-position: left top;
 		background-repeat: no-repeat;
 		padding-left: 48px;
+		@media print {
+			-webkit-print-color-adjust: exact;
+			background-position: left top !important;
+			background-repeat: no-repeat !important;
+		}
 	}
 	&.bottom {
 		margin-bottom: 0;
